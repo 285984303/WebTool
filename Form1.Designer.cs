@@ -64,9 +64,9 @@
             // 
             // txtHTML
             // 
-            this.txtHTML.Location = new System.Drawing.Point(12, 68);
+            this.txtHTML.Location = new System.Drawing.Point(12, 54);
             this.txtHTML.Name = "txtHTML";
-            this.txtHTML.Size = new System.Drawing.Size(653, 370);
+            this.txtHTML.Size = new System.Drawing.Size(653, 384);
             this.txtHTML.TabIndex = 3;
             this.txtHTML.Text = "";
             // 
