@@ -59,12 +59,9 @@ namespace WebTool
             respStream.Close();
             //txtHTML.Text = strBuff;
 
-            //Regex reg = new Regex(@"(?is)<a[^>]*?href=(['""\s]?)(?<href>[^'""\s]*)\1[^>]*?>");
-            //MatchCollection match = reg.Matches(strBuff);
+            Regex reg = new Regex(@"(?is)<a[^>]*?href=(['""\s]?)(?<href>[^'""\s]*)\1[^>]*?>");
+            MatchCollection match = reg.Matches(strBuff);
 
-            //Match mc = Regex.Match(strBuff, @"<a href=""([^>]+?)"">([^<]+?)</a>", RegexOptions.Multiline);
-            //string href = mc.Group[1].Value;
-            //string data = mc.Group[2].Value;
 
             //foreach (Match m in match)
             //{
@@ -73,20 +70,41 @@ namespace WebTool
             //    Console.WriteLine(m.Groups["href"].Value + "\r\n");
             //}
 
+            Regex reg1 = new Regex(@"(?is)<a[^>]*?href=(['""]?)(?<url>[^'""\s>]+)\1[^>]*>(?<text>(?:(?!</?a\b).)*)</a>");
+            MatchCollection mc = reg1.Matches(strBuff);
+            //foreach (Match m in mc)
+            //{
+            //    txtHTML.Text += m.Groups["url"].Value + "\n";
+            //    txtHTML.Text += m.Groups["text"].Value + "\n";
+            //}
+
+
             //string text = File.ReadAllText(Environment.CurrentDirectory + "//test.txt", Encoding.GetEncoding("gb2312"));
-            string prttern = "<a(\\s+(href=\"(?<url>([^\"])*)\"|'([^'])*'|\\w+=\"(([^\"])*)\"|'([^'])*'))+>(?<text>(.*?))</a>";
-            var maths = Regex.Matches(strBuff, prttern);
+            //string prttern = "<a(\\s+(href=\"(?<url>([^\"])*)\"|'([^'])*'|\\w+=\"(([^\"])*)\"|'([^'])*'))+>(?<text>(.*?))</a>";
+            //var maths = Regex.Matches(strBuff, prttern, RegexOptions.Multiline);
             //抓取出来写入的文件
-            txtHTML.Text = "";
+            //txtHTML.Text = "";
             using (FileStream w = new FileStream(Environment.CurrentDirectory + "//url_list.txt", FileMode.Create))
             {
 
-                for (int i = 0; i < maths.Count; i++)
+                //for (int i = 0; i < maths.Count; i++)
+                //{
+                //    byte[] bs = Encoding.UTF8.GetBytes(string.Format("链接地址:{0}, innerhtml:{1}", maths[i].Groups["url"].Value,maths[i].Groups["text"].Value) + "\r\n");
+                //    w.Write(bs, 0, bs.Length);
+                //    //Console.WriteLine();
+                //    txtHTML.Text += maths[i].Groups["text"].Value +" "+ maths[i].Groups["url"].Value + "\r\n";
+                //}
+
+                foreach (Match m in mc)
                 {
-                    byte[] bs = Encoding.UTF8.GetBytes(string.Format("链接地址:{0}, innerhtml:{1}", maths[i].Groups["url"].Value,maths[i].Groups["text"].Value) + "\r\n");
+                    byte[] bs = Encoding.UTF8.GetBytes(string.Format("链接地址:{0}, 名称:{1}", m.Groups["url"].Value, m.Groups["text"].Value) + "\r\n");
                     w.Write(bs, 0, bs.Length);
-                    //Console.WriteLine();
-                    txtHTML.Text += maths[i].Groups["text"].Value +" "+ maths[i].Groups["url"].Value + "\r\n";
+                    if (m.Groups["url"].Value.Contains("bbs.9game.cn"))
+                        txtHTML.Text += m.Groups["text"].Value + " " + m.Groups["url"].Value + "\r\n";
+                    else
+                    {
+                        txtHTML.Text += m.Groups["text"].Value + " " + "http://bbs.9game.cn/" + m.Groups["url"].Value + "\r\n";
+                    }
                 }
             }
             //Console.ReadKey();

@@ -49,7 +49,8 @@
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.Size = new System.Drawing.Size(532, 21);
             this.txtUrl.TabIndex = 1;
-            this.txtUrl.Text = "http://140.143.197.142/";
+            this.txtUrl.Text = "http://bbs.9game.cn/forum.php?mod=forumdisplay&fid=11018&filter=typeid&typeid=799" +
+    "27";
             // 
             // btnOK
             // 
