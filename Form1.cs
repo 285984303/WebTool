@@ -59,8 +59,8 @@ namespace WebTool
             respStream.Close();
             //txtHTML.Text = strBuff;
 
-            Regex reg = new Regex(@"(?is)<a[^>]*?href=(['""\s]?)(?<href>[^'""\s]*)\1[^>]*?>");
-            MatchCollection match = reg.Matches(strBuff);
+            //Regex reg = new Regex(@"(?is)<a[^>]*?href=(['""\s]?)(?<href>[^'""\s]*)\1[^>]*?>");
+            //MatchCollection match = reg.Matches(strBuff);
 
 
             //foreach (Match m in match)
@@ -99,7 +99,7 @@ namespace WebTool
                 {
                     byte[] bs = Encoding.UTF8.GetBytes(string.Format("链接地址:{0}, 名称:{1}", m.Groups["url"].Value, m.Groups["text"].Value) + "\r\n");
                     w.Write(bs, 0, bs.Length);
-                    if (m.Groups["url"].Value.Contains("bbs.9game.cn"))
+                    if (m.Groups["url"].Value.Contains("9game.cn"))
                         txtHTML.Text += m.Groups["text"].Value + " " + m.Groups["url"].Value + "\r\n";
                     else
                     {
