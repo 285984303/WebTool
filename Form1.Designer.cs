@@ -37,7 +37,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 30);
+            this.label1.Location = new System.Drawing.Point(11, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 12);
             this.label1.TabIndex = 0;
@@ -45,15 +45,15 @@
             // 
             // txtUrl
             // 
-            this.txtUrl.Location = new System.Drawing.Point(78, 27);
+            this.txtUrl.Location = new System.Drawing.Point(52, 27);
             this.txtUrl.Name = "txtUrl";
-            this.txtUrl.Size = new System.Drawing.Size(554, 21);
+            this.txtUrl.Size = new System.Drawing.Size(532, 21);
             this.txtUrl.TabIndex = 1;
             this.txtUrl.Text = "http://140.143.197.142/";
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(662, 24);
+            this.btnOK.Location = new System.Drawing.Point(590, 25);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 2;
@@ -65,7 +65,7 @@
             // 
             this.txtHTML.Location = new System.Drawing.Point(12, 68);
             this.txtHTML.Name = "txtHTML";
-            this.txtHTML.Size = new System.Drawing.Size(620, 370);
+            this.txtHTML.Size = new System.Drawing.Size(653, 370);
             this.txtHTML.TabIndex = 3;
             this.txtHTML.Text = "";
             // 
@@ -73,7 +73,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(678, 450);
             this.Controls.Add(this.txtHTML);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txtUrl);
