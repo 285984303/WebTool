@@ -49,8 +49,8 @@
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.Size = new System.Drawing.Size(591, 21);
             this.txtUrl.TabIndex = 1;
-            this.txtUrl.Text = "http://bbs.9game.cn/forum.php?mod=forumdisplay&fid=11018&typeid=79927&typeid=7992" +
-    "7&filter=typeid&page=1";
+            this.txtUrl.Text = "http://bbs.9game.cn/forum.php?mod=forumdisplay&fid=11018&orderby=dateline&typeid=" +
+    "79927&filter=author&orderby=dateline&typeid=79927&page=1";
             // 
             // btnOK
             // 

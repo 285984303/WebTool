@@ -29,7 +29,7 @@ namespace WebTool
             HttpWebResponse httpResp;
 
             string strBuff = "";
-            char[] cbuffer = new char[256];
+            char[] cbuffer = new char[512];
             int byteRead = 0;
 
             Uri httpURL = new Uri(this.txtUrl.Text);
@@ -49,13 +49,13 @@ namespace WebTool
             //StreamReader类的Read方法依次读取网页源程序代码每一行的内容，直至行尾（读取的编码格式：UTF8） 
             StreamReader respStreamReader = new StreamReader(respStream, Encoding.UTF8);
 
-            byteRead = respStreamReader.Read(cbuffer, 0, 256);
+            byteRead = respStreamReader.Read(cbuffer, 0, 512);
 
             while (byteRead != 0)
             {
                 string strResp = new string(cbuffer, 0, byteRead);
                 strBuff = strBuff + strResp;
-                byteRead = respStreamReader.Read(cbuffer, 0, 256);
+                byteRead = respStreamReader.Read(cbuffer, 0, 512);
             }
 
             respStream.Close();
