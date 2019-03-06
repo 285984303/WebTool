@@ -101,15 +101,18 @@ namespace WebTool
 
                 foreach (Match m in mc)
                 {
-                    byte[] bs = Encoding.UTF8.GetBytes(string.Format("链接地址:{0}, 名称:{1}", m.Groups["url"].Value, m.Groups["text"].Value) + "\r\n");
-                    w.Write(bs, 0, bs.Length);
+                    
                     string text = m.Groups["text"].Value.Replace("<img src=\"static/image/common/pin_1.gif\" alt=\"本版置顶\" style=\"width:18px;\"/>", "");
-                    if (m.Groups["url"].Value.Contains("9game.cn"))
-                        txtHTML.Text += text + " " + m.Groups["url"].Value + "\r\n";
-                    else
-                    {
-                        txtHTML.Text += text + " " + "http://bbs.9game.cn/" + m.Groups["url"].Value + "\r\n";
-                    }
+                    string url = m.Groups["url"].Value;
+                    //string title = "";
+                    if (!url.Contains("9game.cn"))
+                        url = "http://bbs.9game.cn/" + url;
+
+                    txtHTML.Text += text + " " + url + "\r\n";
+
+
+                    byte[] bs = Encoding.UTF8.GetBytes(string.Format("{0}, {1}", text, url) + "\r\n");
+                    w.Write(bs, 0, bs.Length);
                 }
             }
             //Console.ReadKey();

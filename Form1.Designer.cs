@@ -49,8 +49,8 @@
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.Size = new System.Drawing.Size(591, 21);
             this.txtUrl.TabIndex = 1;
-            this.txtUrl.Text = "http://bbs.9game.cn/forum.php?mod=forumdisplay&fid=11018&filter=typeid&typeid=799" +
-    "27";
+            this.txtUrl.Text = "http://bbs.9game.cn/forum.php?mod=forumdisplay&fid=11018&typeid=79927&typeid=7992" +
+    "7&filter=typeid&page=1";
             // 
             // btnOK
             // 
@@ -75,6 +75,7 @@
             // 
             // Form1
             // 
+            this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(737, 450);
