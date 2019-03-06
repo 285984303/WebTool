@@ -15,12 +15,7 @@ namespace WebTool
 {
     public partial class Form1 : Form
     {
-        HttpWebRequest httpReq;
-        HttpWebResponse httpResp;
 
-        string strBuff = "";
-        char[] cbuffer = new char[256];
-        int byteRead = 0;
 
         //string filename = @"e:\url_log.txt";
         public Form1()
@@ -30,6 +25,13 @@ namespace WebTool
 
         private void BtnOK_Click(object sender, EventArgs e)
         {
+            HttpWebRequest httpReq;
+            HttpWebResponse httpResp;
+
+            string strBuff = "";
+            char[] cbuffer = new char[256];
+            int byteRead = 0;
+
             Uri httpURL = new Uri(this.txtUrl.Text);
 
             ///HttpWebRequest类继承于WebRequest，并没有自己的构造函数，需通过WebRequest的Creat方法 建立，并进行强制的类型转换 
@@ -83,7 +85,9 @@ namespace WebTool
             //string prttern = "<a(\\s+(href=\"(?<url>([^\"])*)\"|'([^'])*'|\\w+=\"(([^\"])*)\"|'([^'])*'))+>(?<text>(.*?))</a>";
             //var maths = Regex.Matches(strBuff, prttern, RegexOptions.Multiline);
             //抓取出来写入的文件
-            //txtHTML.Text = "";
+            this.txtHTML.Clear();
+            this.txtHTML.Rtf = "";
+            this.txtHTML.Text = "";
             using (FileStream w = new FileStream(Environment.CurrentDirectory + "//url_list.txt", FileMode.Create))
             {
 
