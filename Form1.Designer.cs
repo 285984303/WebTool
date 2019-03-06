@@ -47,14 +47,14 @@
             // 
             this.txtUrl.Location = new System.Drawing.Point(52, 27);
             this.txtUrl.Name = "txtUrl";
-            this.txtUrl.Size = new System.Drawing.Size(532, 21);
+            this.txtUrl.Size = new System.Drawing.Size(591, 21);
             this.txtUrl.TabIndex = 1;
             this.txtUrl.Text = "http://bbs.9game.cn/forum.php?mod=forumdisplay&fid=11018&filter=typeid&typeid=799" +
     "27";
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(590, 25);
+            this.btnOK.Location = new System.Drawing.Point(649, 25);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 2;
@@ -64,9 +64,12 @@
             // 
             // txtHTML
             // 
+            this.txtHTML.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtHTML.Location = new System.Drawing.Point(12, 54);
             this.txtHTML.Name = "txtHTML";
-            this.txtHTML.Size = new System.Drawing.Size(653, 384);
+            this.txtHTML.Size = new System.Drawing.Size(712, 384);
             this.txtHTML.TabIndex = 3;
             this.txtHTML.Text = "";
             // 
@@ -74,7 +77,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(678, 450);
+            this.ClientSize = new System.Drawing.Size(737, 450);
             this.Controls.Add(this.txtHTML);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txtUrl);

@@ -103,11 +103,12 @@ namespace WebTool
                 {
                     byte[] bs = Encoding.UTF8.GetBytes(string.Format("链接地址:{0}, 名称:{1}", m.Groups["url"].Value, m.Groups["text"].Value) + "\r\n");
                     w.Write(bs, 0, bs.Length);
+                    string text = m.Groups["text"].Value.Replace("<img src=\"static/image/common/pin_1.gif\" alt=\"本版置顶\" style=\"width:18px;\"/>", "");
                     if (m.Groups["url"].Value.Contains("9game.cn"))
-                        txtHTML.Text += m.Groups["text"].Value + " " + m.Groups["url"].Value + "\r\n";
+                        txtHTML.Text += text + " " + m.Groups["url"].Value + "\r\n";
                     else
                     {
-                        txtHTML.Text += m.Groups["text"].Value + " " + "http://bbs.9game.cn/" + m.Groups["url"].Value + "\r\n";
+                        txtHTML.Text += text + " " + "http://bbs.9game.cn/" + m.Groups["url"].Value + "\r\n";
                     }
                 }
             }
