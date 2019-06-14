@@ -118,7 +118,13 @@ namespace WebTool
             //Console.ReadKey();
 
         }
-
+        /// <summary>
+        /// postDataStr
+        /// </summary>
+        /// <param name="postUrl"></param>
+        /// <param name="paramData">name=test&pass=123456</param>
+        /// <param name="dataEncode"></param>
+        /// <returns></returns>
         private string PostWebRequest(string postUrl, string paramData, Encoding dataEncode)
         {
             string ret = string.Empty;
@@ -145,6 +151,60 @@ namespace WebTool
                 MessageBox.Show(ex.Message);
             }
             return ret;
+        }
+
+        /// <summary>
+        /// POST请求与获取结果
+        /// </summary>
+        /// <param name="Url"></param>
+        /// <param name="postDataStr"></param>
+        /// <returns></returns>
+        public static string HttpPost(string Url, string postDataStr)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url);
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = postDataStr.Length;
+            StreamWriter writer = new StreamWriter(request.GetRequestStream(), Encoding.ASCII);
+            writer.Write(postDataStr);
+            writer.Flush();
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            string encoding = response.ContentEncoding;
+            if (encoding == null || encoding.Length < 1)
+            {
+                encoding = "UTF-8"; //默认编码
+            }
+            StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding(encoding));
+            string retString = reader.ReadToEnd();
+            return retString;
+        }
+
+        /// <summary>
+        /// GET请求与获取结果
+        /// </summary>
+        public static string HttpGet(string Url, string postDataStr)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url + (postDataStr == "" ? "" : "?") + postDataStr);
+            request.Method = "GET";
+            request.ContentType = "text/html;charset=UTF-8";
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            Stream myResponseStream = response.GetResponseStream();
+            StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.UTF8);
+            string retString = myStreamReader.ReadToEnd();
+            myStreamReader.Close();
+            myResponseStream.Close();
+
+            return retString;
+        }
+
+        static void Main(string[] args)
+        {
+            string url = "http://www.mystudy.cn/LoginHandler.aspx";
+            string data = "UserName=admin&Password=123";
+            string result = HttpPost(url, data);
+            Console.WriteLine(result);
+            Console.ReadLine();
         }
 
     }
